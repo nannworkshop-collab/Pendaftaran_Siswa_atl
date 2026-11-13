@@ -1,0 +1,150 @@
+/* 1. Pengaturan dasar */
+* { box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a63, #2c5364);
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  color: white;
+}
+
+/* 2. Floating bubbles */
+.bubbles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -150px;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255,255,255,.45),
+    rgba(255,255,255,.05) 60%,
+    rgba(255,255,255,.15));
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow: inset -5px -5px 15px rgba(255,255,255,.08),
+              0 0 15px rgba(255,255,255,.08);
+  backdrop-filter: blur(3px);
+  animation: floatBubble 18s linear infinite;
+}
+
+@keyframes floatBubble {
+  0% { transform: translate3d(0,0,0); opacity: 0; }
+  10% { opacity: .7; }
+  50% { transform: translate3d(40px,-55vh,0); }
+  90% { opacity: .5; }
+  100% { transform: translate3d(-30px,-115vh,0); opacity: 0; }
+}
+
+.bubbles span:nth-child(1) { left: 10%; width: 45px; height: 45px; animation-duration: 16s; }
+.bubbles span:nth-child(2) { left: 25%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 3s; }
+.bubbles span:nth-child(3) { left: 40%; width: 65px; height: 65px; animation-duration: 22s; animation-delay: 5s; }
+.bubbles span:nth-child(4) { left: 55%; width: 30px; height: 30px; animation-duration: 14s; animation-delay: 2s; }
+.bubbles span:nth-child(5) { left: 70%; width: 55px; height: 55px; animation-duration: 20s; animation-delay: 7s; }
+.bubbles span:nth-child(6) { left: 85%; width: 25px; height: 25px; animation-duration: 13s; animation-delay: 4s; }
+.bubbles span:nth-child(7) { left: 95%; width: 70px; height: 70px; animation-duration: 24s; animation-delay: 1s; }
+.bubbles span:nth-child(8) { left: 5%; width: 35px; height: 35px; animation-duration: 19s; animation-delay: 9s; }
+
+/* 3. Header */
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin: 0 auto 30px;
+}
+.header h1 { font-size: 30px; margin: 0 0 5px; }
+.header h2 { font-size: 20px; color: rgba(255,255,255,.85); margin: 0 0 10px; }
+.header p { color: rgba(255,255,255,.7); }
+
+/* 4. Liquid glass form */
+form {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: auto;
+  padding: 35px;
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2),
+              inset 0 1px 1px rgba(255,255,255,.3);
+}
+
+/* 5. Labels dan input */
+label, legend { color: white; font-weight: bold; }
+form > label { display: block; margin: 15px 0 8px; }
+
+input[type="text"], select, textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,.65); }
+input:focus, select:focus, textarea:focus {
+  border-color: white;
+  box-shadow: 0 0 10px rgba(255,255,255,.3);
+}
+select option { background: #203a63; color: white; }
+textarea { resize: vertical; }
+
+/* 6. Radio button */
+fieldset { border: 0; padding: 0; margin: 18px 0 8px; }
+legend { margin-bottom: 8px; }
+.radio-group { display: flex; gap: 25px; align-items: center; }
+.radio-group label { display: flex; align-items: center; gap: 7px; font-weight: normal; }
+input[type="radio"] { accent-color: white; }
+
+/* 7. Tombol */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 25px;
+  background: rgba(255,255,255,.25);
+  color: white;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s ease;
+}
+button:hover { background: rgba(255,255,255,.4); transform: translateY(-2px); }
+button:active { transform: scale(.98); }
+
+/* 8. Catatan dan status */
+.note, .status {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.5;
+}
+.status { font-size: 14px; min-height: 1em; }
+
+/* 9. Responsive */
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
+  form { padding: 22px; }
+  .header h1 { font-size: 23px; }
+  .radio-group { gap: 15px; }
+}
+
+/* 10. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bubbles span { animation: none; }
+  button { transition: none; }
+}
