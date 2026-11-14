@@ -1,3 +1,10 @@
+:root {
+    --maroon-primary: #641C32;
+    --maroon-secondary: #8B2945;
+    --maroon-dark: #3B1724;
+    --white-soft: #F8F5F5;
+    --white-pure: #FFFFFF;
+}
 /* 1. Pengaturan dasar */
 * { box-sizing: border-box; }
 
@@ -185,10 +192,33 @@ button .ripple {
         transform: scale(4);
         opacity: 0;
     }
-:root {
-    --maroon-primary: #641C32;
-    --maroon-secondary: #8B2945;
-    --maroon-dark: #3B1724;
-    --white-soft: #F8F5F5;
-    --white-pure: #FFFFFF;
+body {
+    background: linear-gradient(
+        135deg,
+        #F8F5F5,
+        #EBDDE2,
+        #FFFFFF
+    );
+    color: var(--maroon-dark);
+}
+
+form {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(100, 28, 50, 0.18);
+    backdrop-filter: blur(18px);
+}
+
+button {
+    background: linear-gradient(
+        135deg,
+        var(--maroon-secondary),
+        var(--maroon-primary)
+    );
+    color: var(--white-pure);
+    box-shadow: 0 8px 20px rgba(100, 28, 50, 0.22);
+}
+
+button:hover {
+    background: var(--maroon-dark);
+    box-shadow: 0 10px 25px rgba(100, 28, 50, 0.3);
 }
