@@ -185,4 +185,10 @@ button .ripple {
         transform: scale(4);
         opacity: 0;
     }
+:root {
+    --maroon-primary: #641C32;
+    --maroon-secondary: #8B2945;
+    --maroon-dark: #3B1724;
+    --white-soft: #F8F5F5;
+    --white-pure: #FFFFFF;
 }
